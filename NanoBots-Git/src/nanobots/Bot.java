@@ -13,27 +13,36 @@ public class Bot extends JComponent{
 	
 	int arenaX;
 	int arenaY;
-	int pos_x;
-	int pos_y;
-	int startx;
-	int starty;
-	int direction;
+	double pos_x;
+	double pos_y;
+	double startx;
+	double starty;
+	double direction;
+	double size;
 
 	@Override
 	public void paint(Graphics g) {
 		// TODO Auto-generated method stub
 		super.paint(g);
 		g.setColor(Color.RED);
-		g.fillOval(pos_x,pos_y,15,15);
+		g.fillOval((int)pos_x, (int)pos_y,(int)size,(int)size);
+		g.setColor(Color.BLACK);
+//		g.drawLine((int)pos_x, (int)pos_y, (int)(pos_x+(Math.sin(Math.toRadians(this.direction))*this.size/2)), (int)(pos_y+(Math.cos(Math.toRadians(this.direction))*this.size/2)));
+		g.fillOval((int)(this.size/2+pos_x+(Math.sin(Math.toRadians(this.direction))*this.size/2)-this.size/8), (int)(this.size/2+pos_y-(Math.cos(Math.toRadians(this.direction))*this.size/2)-this.size/8),(int) this.size/4, (int) this.size/4);
 	}
 	
-	public Bot(int posX, int posY){
+	public Bot(double posX, double posY){
 //		setStartingPos(arenaX, arenaY);
-		this.direction=90;
+		this.direction=45;
 		setPosition(posX, posY);
 		}
 	
-	public void setPosition(int x, int y){
+	public Bot(){
+		this.direction=0;
+		this.size=16;
+	}
+	
+	public void setPosition(double x, double y){
 		this.pos_x = x;
 		this.pos_y = y;
 		this.repaint();
@@ -51,8 +60,8 @@ public class Bot extends JComponent{
 	public void setStartingPos(int arenaX, int arenaY){
 		this.arenaX=arenaX;
 		this.arenaY=arenaY;
-		startx=(int) ((Math.random())*arenaX);
-		starty=(int) ((Math.random())*arenaY);
+		startx=((Math.random())*arenaX);
+		starty=((Math.random())*arenaY);
 		setPosition(startx, starty);
 	}
 	
@@ -78,7 +87,9 @@ public class Bot extends JComponent{
 
 	}
 
-
+	public void setDirection(double dir){
+		this.direction=dir;
+	}
 
 	
 }
