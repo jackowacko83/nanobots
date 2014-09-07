@@ -9,6 +9,7 @@ public class Arena extends Thread{
 	int sizeX;
 	int sizeY;
 	//test
+	//test
 	
 	@Override
 	public void run() {
