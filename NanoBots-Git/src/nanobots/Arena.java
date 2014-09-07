@@ -8,6 +8,7 @@ public class Arena extends Thread{
 	JFrame frame = new JFrame();
 	int sizeX;
 	int sizeY;
+	//test
 	
 	@Override
 	public void run() {
