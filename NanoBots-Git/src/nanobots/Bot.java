@@ -19,12 +19,13 @@ public class Bot extends JComponent{
 	double starty;
 	double direction;
 	double size;
+	Color color;
 
 	@Override
 	public void paint(Graphics g) {
 		// TODO Auto-generated method stub
 		super.paint(g);
-		g.setColor(Color.RED);
+		g.setColor(color);
 		g.fillOval((int)pos_x, (int)pos_y,(int)size,(int)size);
 		g.setColor(Color.BLACK);
 //		g.drawLine((int)pos_x, (int)pos_y, (int)(pos_x+(Math.sin(Math.toRadians(this.direction))*this.size/2)), (int)(pos_y+(Math.cos(Math.toRadians(this.direction))*this.size/2)));
@@ -40,6 +41,7 @@ public class Bot extends JComponent{
 	public Bot(){
 		this.direction=0;
 		this.size=16;
+		this.color=Color.RED;
 	}
 	
 	public void setPosition(double x, double y){
@@ -89,6 +91,10 @@ public class Bot extends JComponent{
 
 	public void setDirection(double dir){
 		this.direction=dir;
+	}
+	
+	public void setColor(Color c){
+		this.color = c;
 	}
 
 	

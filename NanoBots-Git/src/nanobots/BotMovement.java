@@ -37,12 +37,20 @@ public class BotMovement {
 			this.posX = this.posX + Math.sin(Math.toRadians(this.direct));
 //			System.out.println(this.posX + " ; "+ this.posY+ " ; "+ bt.sizeX+ " ; "+ bt.sizeY);
 			
-			if(this.posX<0){this.posX=0;}
-			if(this.posX>bt.sizeX-bot.size){this.posX=bt.sizeX-bot.size-1;bot.setPosition(this.posX, this.posY);
-			bt.setTick();break;}
-			if(this.posY<0){this.posY=0;break;}
-			if(this.posY>bt.sizeY-bot.size){this.posY=bt.sizeY-bot.size-1;bot.setPosition(this.posX, this.posY);
-			bt.setTick();break;}
+			if(this.posX<0){
+				this.posX=0;
+				}
+			if(this.posX>bt.sizeX-bot.size){
+				this.posX=bt.sizeX-bot.size-1;bot.setPosition(this.posX, this.posY);
+				bt.setTick();break;
+				}
+			if(this.posY<0){
+				this.posY=0;break;
+				}
+			if(this.posY>bt.sizeY-2*bot.size){
+				this.posY=bt.sizeY-2*bot.size-1;bot.setPosition(this.posX, this.posY);
+				bt.setTick();break;
+				}
 
 			bot.setPosition(this.posX, this.posY);
 			bt.setTick();

@@ -19,7 +19,7 @@ public class BotThread extends Thread{
 		
 		while(true){
 			move.turn(12);
-			move.move3(10);
+			move.move3(90);
 		}
 /*
 		move.move3(170);

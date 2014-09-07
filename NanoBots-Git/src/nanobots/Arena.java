@@ -1,5 +1,7 @@
 package nanobots;
 
+import java.awt.Color;
+
 import javax.swing.JFrame;
 
 public class Arena extends Thread{
@@ -46,12 +48,17 @@ public class Arena extends Thread{
 //		Bot c = new Bot(100, 100);
 		Bot b = new Bot();
 		b.setStartingPos(ar.sizeX, ar.sizeY);
+		Bot c = new Bot();
+		c.setStartingPos(ar.sizeX, ar.sizeY);
+		c.setColor(Color.BLUE);
 //		ar.enterBot(b);
 //		b.repaint();
 
 		ar.start();
 		BotThread a = new BotThread(b, ar.frame, ar.sizeX, ar.sizeY);
 		a.start();
+		BotThread d = new BotThread(c, ar.frame, ar.sizeX, ar.sizeY);
+		d.start();
 
 	}
 
