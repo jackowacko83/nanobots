@@ -18,8 +18,8 @@ public class BotThread extends Thread{
 		move.setDirection(90);
 		
 		while(true){
-			move.turn(12);
-			move.move3(90);
+			move.turn(Math.random()*360);
+			move.move3((int)(Math.random()*100));
 		}
 /*
 		move.move3(170);

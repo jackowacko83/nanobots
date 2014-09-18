@@ -10,8 +10,15 @@ public class Bot extends JComponent{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	int arenaX;
+	/*
+	 * arenaX/Y Arenagroesse
+	 * pos_x/y Bot-Position
+	 * startx/y Startposition
+	 * direction Blickrichtung
+	 * size Botgroesse
+	 * color Koerperfarbe
+	 */
+	int arenaX; 
 	int arenaY;
 	double pos_x;
 	double pos_y;
@@ -20,16 +27,34 @@ public class Bot extends JComponent{
 	double direction;
 	double size;
 	Color color;
+	int sightRadius=40;
 
 	@Override
 	public void paint(Graphics g) {
 		// TODO Auto-generated method stub
 		super.paint(g);
 		g.setColor(color);
-		g.fillOval((int)pos_x, (int)pos_y,(int)size,(int)size);
+		fillCircle(g, pos_x, pos_y, (int)size/2);
+//		deprecated
+	//	g.fillOval((int)pos_x, (int)pos_y,(int)size,(int)size);
+		/*
+		 * Visualisierung des Auges. Soll in die Richtung von direction schauen. 
+		 * Wahrscheinlich wegen Rechenfehler durch toRadians musste nachkorrigiert werden mit -this.size/4
+		 */
 		g.setColor(Color.BLACK);
 //		g.drawLine((int)pos_x, (int)pos_y, (int)(pos_x+(Math.sin(Math.toRadians(this.direction))*this.size/2)), (int)(pos_y+(Math.cos(Math.toRadians(this.direction))*this.size/2)));
-		g.fillOval((int)(this.size/2+pos_x+(Math.sin(Math.toRadians(this.direction))*this.size/2)-this.size/8), (int)(this.size/2+pos_y-(Math.cos(Math.toRadians(this.direction))*this.size/2)-this.size/8),(int) this.size/4, (int) this.size/4);
+		fillCircle(g, pos_x+(Math.sin(Math.toRadians(this.direction))*this.size/2), pos_y-(Math.cos(Math.toRadians(this.direction))*this.size/2), (int)size/8);
+//		deprecated
+//		g.fillOval
+//			(
+//				(int)(this.size/2+pos_x+(Math.sin(Math.toRadians(this.direction))*this.size/2)-this.size/8), 
+//				(int)(this.size/2+pos_y-(Math.cos(Math.toRadians(this.direction))*this.size/2)-this.size/8),
+//				(int) this.size/4, (int) this.size/4
+//			);
+//		Sightrectangle		
+		g.drawLine((int)(pos_x+(Math.sin(Math.toRadians(this.direction))*this.size/2)), (int)(pos_y-(Math.cos(Math.toRadians(this.direction))*this.size/2)), (int)(pos_x+Math.sin(Math.toRadians(this.direction-sightRadius/2))*150), (int)(pos_y-Math.cos(Math.toRadians(this.direction-sightRadius/2))*150));
+		g.drawLine((int)(pos_x+(Math.sin(Math.toRadians(this.direction))*this.size/2)), (int)(pos_y-(Math.cos(Math.toRadians(this.direction))*this.size/2)), (int)(pos_x+Math.sin(Math.toRadians(this.direction+sightRadius/2))*150), (int)(pos_y-Math.cos(Math.toRadians(this.direction+sightRadius/2))*150));
+		g.drawLine((int)(pos_x+Math.sin(Math.toRadians(this.direction-sightRadius/2))*150), (int)(pos_y-Math.cos(Math.toRadians(this.direction-sightRadius/2))*150), (int)(pos_x+Math.sin(Math.toRadians(this.direction+sightRadius/2))*150), (int)(pos_y-Math.cos(Math.toRadians(this.direction+sightRadius/2))*150));
 	}
 	
 	public Bot(double posX, double posY){
@@ -95,6 +120,10 @@ public class Bot extends JComponent{
 	
 	public void setColor(Color c){
 		this.color = c;
+	}
+	
+	public void fillCircle(Graphics g, double x, double y, int r){
+		g.fillOval((int) (x-r), (int)(y-r), 2*r, 2*r);
 	}
 
 	
