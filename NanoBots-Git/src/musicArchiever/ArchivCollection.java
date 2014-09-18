@@ -14,7 +14,7 @@ public class ArchivCollection {
 	public void setAlist(List<Archiv> alist) {
 		this.alist = alist;
 	}
-	
+	//
 	
 
 }

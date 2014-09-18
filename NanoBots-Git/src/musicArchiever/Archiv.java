@@ -20,6 +20,7 @@ public class Archiv {
 	}
 	public void setInterpret(String interpret) {
 		this.interpret = interpret;
+		//
 	}
 	public String getTitel() {
 		return titel;
