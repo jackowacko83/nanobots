@@ -14,13 +14,14 @@ public class BotThread extends Thread{
 		frame.add(bot);
 		frame.setVisible(true);
 		bot.repaint();
-		BotMovement move = new BotMovement(this);
-		move.setDirection(90);
-		
-		while(true){
-			move.turn(Math.random()*360);
-			move.move3((int)(Math.random()*100));
-		}
+		BehaviourRndm rnd = new BehaviourRndm(this);
+//		BotMovement move = new BotMovement(this);
+//		move.setDirection(90);
+//		
+//		while(true){
+//			move.turn(Math.random()*360);
+//			move.move3((int)(Math.random()*100));
+//		}
 /*
 		move.move3(170);
 		move.turn(90);
